@@ -1,14 +1,28 @@
 # Your Code Here
 #map negative, same, double, squared
-def map(source_array)
+def map(arr)
+  new = []
   i = 0
-  while i < source_array.length do 
-    puts source_array[i]
+  while i < arr.length
+    new.push(yield(arr[i]))
+    i += 1
   end
-  i += 1 
+  return new
 end
 
-map{|n| n * -1}
 
 #reduce total, all true, any true 
-
+def reduce(arr, sp=nil)
+  if sp
+    accum = sp
+    i = 0
+  else
+    accum = arr[0]
+    i = 1
+  end
+  while i < arr.length
+    accum = yield(accum, arr[i])
+    i += 1
+  end
+  accum
+end
