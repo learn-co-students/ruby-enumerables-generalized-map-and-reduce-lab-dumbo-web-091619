@@ -14,15 +14,15 @@ end
 #reduce total, all true, any true 
 def reduce(arr, sp=nil)
   if sp
-    accum = sp
+    total = sp
     i = 0
   else
-    accum = arr[0]
+    total = arr[0]
     i = 1
   end
   while i < arr.length
-    accum = yield(accum, arr[i])
+    total = yield(total, arr[i])
     i += 1
   end
-  accum
+  total
 end
